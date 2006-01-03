@@ -1,0 +1,57 @@
+-- phpMyAdmin SQL Dump
+-- version 2.6.3-pl1
+-- http://www.phpmyadmin.net
+-- 
+-- Host: localhost
+-- Generation Time: Jan 01, 2006 at 03:36 AM
+-- Server version: 4.0.25
+-- PHP Version: 5.0.4
+-- 
+-- Database: `saiko`
+-- 
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `sessions`
+-- 
+
+CREATE TABLE `sessions` (
+  `sess_key` char(32) NOT NULL default '',
+  `sess_uid` int(10) NOT NULL default '0',
+  `sess_expires` int(15) NOT NULL default '0',
+  PRIMARY KEY  (`sess_key`)
+) TYPE=InnoDB;
+
+-- 
+-- Dumping data for table `sessions`
+-- 
+
+INSERT INTO `sessions` VALUES ('15fc2d119c63862246f20c47894cb4d7', 0, 1136188944);
+INSERT INTO `sessions` VALUES ('79470ab8efaf102da7a0ed919fcf72c3', 1, 1136157117);
+INSERT INTO `sessions` VALUES ('c889ec4462de6bcb8b0974c7f3004a6a', 0, 1136105952);
+INSERT INTO `sessions` VALUES ('d4c8ad329e80ecf2abc2e803b68f3bdc', 1, 1136157248);
+INSERT INTO `sessions` VALUES ('ded4fe5b721afd4a4c26180789edeea6', 1, 1136157179);
+INSERT INTO `sessions` VALUES ('e02e9ac5f75cccfa2282a5603af782ae', 1, 1136106183);
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `users`
+-- 
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL auto_increment,
+  `username` varchar(255) NOT NULL default '',
+  `password` varchar(255) NOT NULL default '',
+  `email` varchar(75) NOT NULL default '',
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY `username` (`username`)
+) TYPE=InnoDB AUTO_INCREMENT=3 ;
+
+-- 
+-- Dumping data for table `users`
+-- 
+
+INSERT INTO `users` VALUES (1, 'ashanks', '098f6bcd4621d373cade4e832627b4f6', 'ashanks@gmail.com');
+INSERT INTO `users` VALUES (2, 'bob', '8afd51b6351ed13bddacf53e194c0ebc', 'bob@web.tv');
