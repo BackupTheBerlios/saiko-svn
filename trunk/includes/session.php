@@ -10,9 +10,6 @@ if(isset($_COOKIE['sess_key']))
 {
     // Load the $_SESS array.
     readSession($_COOKIE['sess_key']);
-    //die(print_r($_SESS));
-    // Based off of $_SESS[sess_uid], fetch the user data.
-
 }
 else
 {
@@ -30,7 +27,6 @@ else
 }
 
 updateSession();
-
 
 function pruneSessions()
 {
@@ -57,7 +53,6 @@ function updateSession()
     
     $db->query('UPDATE sessions SET sess_expires = \''.(time() + SESSION_EXPIRE).'\', sess_uid = \''.$_SESS['sess_uid'].'\' WHERE sess_key = \''.$_SESS['sess_key'].'\'');
     readSession($_SESS['sess_key']);
-    //die(print_r($_SESS));
 }
 
 

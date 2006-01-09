@@ -4,6 +4,7 @@ $pluginData['nonOOP'] = TRUE;
 function init($args)
 {
     global $_SESS, $user;
+    die(print(httpGetVar('foobar', "Wow you're so cool!")));
     displayTemplate('Hello, World', 'user_login_form', array('foo' => 'bar'));
     $_SESS['sess_uid'] = 1;
     updateSession();

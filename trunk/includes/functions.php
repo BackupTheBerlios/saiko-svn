@@ -23,6 +23,11 @@ function displayTemplate($title, $template, $vars)
     $t->display('footer');
 }
 
+function linkTo($title, $controller, $action, $id)
+{
+    return '<a href="'.PATH.'/'.$controller.'/'.$action.'/'.$id.'">'.$title.'</a>';
+}
+
 function error($errorMessage, $line, $file)
 {
     if(defined('DEBUG'))
@@ -42,13 +47,13 @@ function redirect($location, $message)
         $location = '/';
     }
 ?>
-<meta http-equiv="refresh" content="3;URL=<?php echo $location ?>">
+<meta http-equiv="refresh" content="3;URL=<?php echo PATH.$location ?>">
 <title>Redirecting...</title>
 <?php
-if(isset($message))
-{
-    echo "<div id=\"redirect-message\">\n".$message."\n</div>";
-}
+    if(isset($message))
+    {
+        echo "<div id=\"redirect-message\">\n".$message."\n</div>";
+    }
 }
 
 function hash($string)
@@ -56,13 +61,24 @@ function hash($string)
     return md5($string);
 }
 
+function prepareValue($value)
+{
+    $value = htmlspecialchars($value);
+    $value = str_replace("$", "&#36;", $value);
+    if (get_magic_quotes_gpc() == 0)
+    {
+        $value = addslashes($value);
+    }
+    return $value;
+}
+
 function httpPostVar($var, $defVal)
 {
-    return (isset($_POST[$var]) ? $_POST[$var] : $defVal);
+    return (isset($_POST[$var]) ? prepareValue($_POST[$var]) : prepareValue($defVal));
 }
 
 function httpGetVar($var, $defVal)
 {
-    return (isset($_GET[$var]) ? $_GET[$var] : $defVal);
+    return (isset($_GET[$var]) ? prepareValue($_GET[$var]) : prepareValue($defVal));
 }
 ?>

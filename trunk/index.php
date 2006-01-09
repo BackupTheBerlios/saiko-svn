@@ -1,22 +1,12 @@
 <?php
-/* Main file. OMGWTFBBQ */
+/* Main file. */
 require 'includes/global.php';
-
 $params = explode('/', $_SERVER['REQUEST_URI']);
 
-/*$key = array_search(ROOT, $params);
-for($i = 0; $i < count($params); $i++)
-{
-    if($i != $key)
-    {
-        $newParams[$i+1] = $params[$i+1];
-    }
-}
-unset($params);*/
 $args = array('controller' => $params[1+$pathOffset], 'action' => $params[2+$pathOffset], 'id' => $params[3+$pathOffset]);
 unset($params); // Non-needed array reduces memory footprint
 loadPlugin($args);
-
+die(print_r($args));
 function loadPlugin($args)
 {
     //print 'loading '.$args['controller'].' with action '.$args['action'].' and id '.$args['id'];
