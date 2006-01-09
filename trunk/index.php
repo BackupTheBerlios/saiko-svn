@@ -1,5 +1,5 @@
 <?php
-/* Main file. */
+/* Main file. OMGWTFBBQ */
 require 'includes/global.php';
 
 $params = explode('/', $_SERVER['REQUEST_URI']);
