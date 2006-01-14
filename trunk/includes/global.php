@@ -1,11 +1,9 @@
 <?php
 /* Saiko Global File */
 require 'config.php';
-//ini_set('include_path', '/usr/lib/php5/share/pear');
-ini_set('include_path', PEAR_PATH);
 error_reporting(E_ALL ^ E_NOTICE);
 
-define('SK_VERSION', '0-4a');
+define('SK_VERSION', '0.4a');
 define('PATH', (dirname($_SERVER['PHP_SELF']) == '/') ? '' : dirname($_SERVER['PHP_SELF']));
 
 require 'DB.php'; // PEAR
