@@ -44,10 +44,14 @@ function redirect($location, $message)
 {
     if(!$location)
     {
-        $location = '/';
+        $href = PATH.'/';
+    }
+    else
+    {
+        $href = PATH.$location;
     }
 ?>
-<meta http-equiv="refresh" content="3;URL=<?php echo PATH.$location ?>">
+<meta http-equiv="refresh" content="3;URL=<?php echo $href; ?>">
 <title>Redirecting...</title>
 <?php
     if(isset($message))
@@ -74,11 +78,11 @@ function prepareValue($value)
 
 function httpPostVar($var, $defVal)
 {
-    return (isset($_POST[$var]) ? prepareValue($_POST[$var]) : prepareValue($defVal));
+    return (isset($_POST[$var]) ? $_POST[$var] : $defVal);
 }
 
 function httpGetVar($var, $defVal)
 {
-    return (isset($_GET[$var]) ? prepareValue($_GET[$var]) : prepareValue($defVal));
+    return (isset($_GET[$var]) ? $_GET[$var] : $defVal);
 }
 ?>
